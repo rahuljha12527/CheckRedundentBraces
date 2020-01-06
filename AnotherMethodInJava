@@ -1,0 +1,35 @@
+import java.util.Stack;
+
+public class solution {
+	
+	public static boolean checkRedundantBrackets(String input) {
+		// Write your code here
+
+        Stack<Character> stack=new Stack<>();
+        
+        char [] str=input.toCharArray();
+        
+        for(char ch:str){
+            
+            if(ch==')'){
+                
+                char top=stack.pop();
+                int counter=0; 
+                while(top!='('){
+                    counter++;
+                   top=  stack.pop();
+                }
+                
+                if(counter<=1){
+                    return true;
+                }
+                
+            }
+            else{
+                
+                stack.push(ch);
+            }
+        }
+        return false;
+	}
+}
